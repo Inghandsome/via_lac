@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+canvas {
+  display: block;
+}
+
+#hud {
+  position: fixed;
+  top: 1rem;
+  left: 1.25rem;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0 0 8px #000, 0 0 16px #000;
+  pointer-events: none;
+}
+
+#hud h1 {
+  margin: 0 0 0.6rem;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 500;
+}
+
+#hud p {
+  margin: 0.25rem 0;
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+}
+
+#msg {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  color: #ffd66b;
+  font-size: clamp(1.8rem, 5vw, 4rem);
+  text-align: center;
+  text-shadow: 0 0 18px #ffc247, 0 0 42px #ff9c21;
+  pointer-events: none;
+}
+
+#msg[hidden] {
+  display: none;
+}
