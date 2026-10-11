@@ -150,10 +150,12 @@ for (let i = 0; i < 180; i += 1) {
 }
 
 const seqElement = document.querySelector('#seq')
+const roundElement = document.querySelector('#round')
 const taskElement = document.querySelector('#task')
 const scoreElement = document.querySelector('#score')
 const inventoryElement = document.querySelector('#inventory')
-const explorationElement = document.querySelector('#exploration')
+const visitedPlanetsElement = document.querySelector('#visited-planets')
+const aliensFoundElement = document.querySelector('#aliens-found')
 const messageElement = document.querySelector('#msg')
 const actionButton = document.querySelector('#action-button')
 const scanButton = document.querySelector('#scan-button')
@@ -202,17 +204,15 @@ function updateHud() {
   const remaining = roundIndex < fibonacci.length
     ? fibonacci[roundIndex] - placedInRound
     : 0
-  if (!finished) {
-    scoreElement.textContent = currentSurface
-      ? `Puntos: ${score} · Ronda ${roundIndex + 1}: faltan ${remaining}`
-      : `Ronda ${roundIndex + 1}: faltan ${remaining} estrellas · Puntos: ${score}`
-  } else {
-    scoreElement.textContent = `Puntos: ${score}`
-  }
+  roundElement.textContent = finished
+    ? 'Rondas completadas'
+    : `Ronda ${roundIndex + 1}: faltan ${remaining} estrellas`
+  scoreElement.textContent = `Puntos: ${score}`
   inventoryElement.textContent = `Estrellas: ${inventory}`
   const alienCount = [...planetProgress.values()]
     .reduce((total, progress) => total + progress.talkedCount, 0)
-  explorationElement.textContent = `Planetas: ${visitedPlanets.size}/8 · Aliens: ${alienCount}`
+  visitedPlanetsElement.textContent = `Planetas visitados: ${visitedPlanets.size}/8`
+  aliensFoundElement.textContent = `Aliens encontrados: ${alienCount}`
 }
 
 // Muestra una felicitación corta en la línea de ayuda del HUD.

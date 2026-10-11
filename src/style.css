@@ -3,7 +3,7 @@ body {
   overflow: hidden;
   background: #000;
   color: #fff;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: system-ui, sans-serif;
 }
 
 canvas {
@@ -12,25 +12,60 @@ canvas {
 
 #hud {
   position: fixed;
-  top: 1rem;
-  left: 1.25rem;
+  top: 0.8rem;
+  left: 0.8rem;
   z-index: 1;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(360px, calc(100vw - 1.6rem));
+  padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(207, 226, 255, 0.22);
+  border-radius: 14px;
+  background: rgba(8, 14, 30, 0.76);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
   color: #fff;
-  text-shadow: 0 0 8px #000, 0 0 16px #000;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   pointer-events: none;
-  max-width: min(760px, calc(100vw - 2rem));
-  line-height: 1.35;
+  line-height: 1.3;
 }
 
 #hud h1 {
-  margin: 0 0 0.6rem;
-  font-size: clamp(1.2rem, 3vw, 2rem);
-  font-weight: 500;
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  font-weight: 650;
+  line-height: 1.2;
 }
 
 #hud p {
-  margin: 0.25rem 0;
-  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  margin: 0.12rem 0;
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
+#task {
+  position: fixed;
+  left: 50%;
+  bottom: 1rem;
+  z-index: 2;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: calc(100vw - 2rem);
+  padding: 0.5rem 0.85rem;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 231, 170, 0.25);
+  border-radius: 999px;
+  background: rgba(8, 14, 30, 0.78);
+  color: #fff4c7;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+}
+
+#task:empty {
+  display: none;
 }
 
 #mobile-controls {
@@ -46,7 +81,7 @@ canvas {
 #action-button {
   position: fixed;
   left: 50%;
-  bottom: 1.4rem;
+  bottom: 4.2rem;
   z-index: 3;
   transform: translateX(-50%);
   padding: 0.8rem 1.4rem;
@@ -138,17 +173,15 @@ canvas {
 
 @media (max-width: 800px) {
   #hud {
-    top: 0.65rem;
-    left: 0.75rem;
-    max-width: calc(100vw - 1.5rem);
+    top: 0.5rem;
+    left: 0.5rem;
+    max-width: calc(100vw - 1rem);
+    padding: 0.55rem 0.7rem;
   }
 
   #hud h1 {
-    margin-bottom: 0.35rem;
-  }
-
-  #hud p {
-    margin: 0.12rem 0;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
   }
 
   #joystick {
@@ -159,5 +192,33 @@ canvas {
   #joystick-thumb {
     width: 40px;
     height: 40px;
+  }
+
+  #task {
+    bottom: 8rem;
+    max-width: calc(100vw - 1rem);
+    font-size: 0.82rem;
+  }
+
+  #action-button {
+    bottom: 11rem;
+  }
+}
+
+@media (max-width: 599px) {
+  #hud {
+    padding: 0.45rem 0.6rem;
+  }
+
+  #hud h1 {
+    font-size: 0.85rem;
+  }
+
+  #hud p {
+    font-size: 0.68rem;
+  }
+
+  #task {
+    font-size: 0.72rem;
   }
 }
